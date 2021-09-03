@@ -10,8 +10,8 @@ import Main from "./Components/Main/Main";
 
 const App = () => {
   return (
-    <div class="container bootstrap snippets bootdeys bootdey">
-      <div class="row decor-default">
+    <div className="container bootstrap snippets bootdeys bootdey">
+      <div className="row decor-default">
         <SideBar />
         <Main />
       </div>
