@@ -1,6 +1,21 @@
 import ContactList from "../ContactList"
 
 const ContactItem = ({ Name, Email, Phone, Image, Status }) => {
+
+    let defaultStatus = "";
+    if (Status === "Friend") {
+        defaultStatus = "lab lab-warning";
+    }
+    else if (Status === "Work") {
+        defaultStatus = "lab lab-success"
+    }
+    else if (Status === "Family") {
+        defaultStatus = "lab lab-primary"
+    }
+    else if (Status === "Private") {
+        defaultStatus = "lab lab-danger"
+    }
+
     return (
         <div className="unit">
             <div className="field name">
@@ -13,7 +28,7 @@ const ContactItem = ({ Name, Email, Phone, Image, Status }) => {
                 <div>
                     <img src={Image} alt="image" className="avatar" /> {Name}
                 </div>
-                <div className="lab lab-warning">{Status}</div>
+                <div className={defaultStatus}>{Status}</div>
             </div>
             <div className="field phone">
                 {Phone}
