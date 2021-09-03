@@ -1,9 +1,18 @@
 // import components
 import ContatItem from "./ContactItem/ContactItem";
 
-const ContactList = () => {
+const ContactList = ({ List }) => {
+
+    const item = List.map(listItem => {
+        return (
+            <ContatItem key={listItem.Id} {...listItem} />
+        )
+    })
+
     return (
-        <ContatItem />
+        <section>
+            {item}
+        </section>
     )
 }
 

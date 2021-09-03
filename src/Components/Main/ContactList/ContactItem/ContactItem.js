@@ -1,6 +1,6 @@
 import ContactList from "../ContactList"
 
-const ContactItem = () => {
+const ContactItem = ({ Name, Email, Phone, Image, Status }) => {
     return (
         <div className="unit">
             <div className="field name">
@@ -11,16 +11,16 @@ const ContactItem = () => {
 
                 </div>
                 <div>
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="image" className="avatar" /> Alexander Verdnam
-</div>
-                <div className="lab lab-warning">Friends</div>
+                    <img src={Image} alt="image" className="avatar" /> {Name}
+                </div>
+                <div className="lab lab-warning">{Status}</div>
             </div>
             <div className="field phone">
-                +1-800-600-9898
-</div>
+                {Phone}
+            </div>
             <div className="field email">
-                example@gmail.com
-</div>
+                {Email}
+            </div>
         </div>
     )
 }
