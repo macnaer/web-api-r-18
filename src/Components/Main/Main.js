@@ -4,7 +4,7 @@ import React from "react-dom";
 import ContactList from "./ContactList/ContactList";
 
 
-const Main = ({ List, onStatusChange }) => {
+const Main = ({ List, onStatusChange, onDelete }) => {
     return (
         <div className="col-lg-9 col-md-8 col-sm-12">
             <div className="contacts-list">
@@ -43,7 +43,7 @@ const Main = ({ List, onStatusChange }) => {
                             </div>
                         </div>
                     </div>
-                    <ContactList List={List} onStatusChange={onStatusChange} />
+                    <ContactList List={List} onStatusChange={onStatusChange} onDelete={onDelete} />
                 </form>
             </div>
         </div>

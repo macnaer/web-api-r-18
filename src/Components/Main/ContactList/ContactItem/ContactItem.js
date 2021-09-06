@@ -1,6 +1,6 @@
 import ContactList from "../ContactList"
 
-const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange }) => {
+const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange, onDelete }) => {
 
     let defaultStatus = "";
     if (Status === "Friend") {
@@ -35,6 +35,10 @@ const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange }) => {
             </div>
             <div className="field email">
                 {Email}
+            </div>
+            <div className="icons">
+                <i className="far fa-edit fa-2x"></i>
+                <i className="far fa-trash-alt fa-2x" onClick={onDelete}></i>
             </div>
         </div>
     )
