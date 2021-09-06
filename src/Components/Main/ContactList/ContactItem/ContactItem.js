@@ -1,23 +1,16 @@
-import ContactList from "../ContactList"
+const ContactItem = ({ Name, Email, Phone, Status, Image, onChangeStatus, onDelete }) => {
 
-const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange, onDelete }) => {
+    let defaultStatus = "lab lab-warning";
 
-    let defaultStatus = "";
-    if (Status === "Friend") {
-        defaultStatus = "lab lab-warning";
-    }
-    else if (Status === "Work") {
-        defaultStatus = "lab lab-success"
-    }
-    else if (Status === "Family") {
-        defaultStatus = "lab lab-primary"
-    }
-    else if (Status === "Private") {
-        defaultStatus = "lab lab-danger"
+    switch (Status) {
+        case "Work": defaultStatus = "lab lab-success"; break;
+        case "Private": defaultStatus = "lab lab-danger"; break;
+        case "Family": defaultStatus = "lab lab-primary"; break;
+        case "Friend": defaultStatus = "lab lab-warning"; break;
     }
 
     return (
-        <div className="unit">
+        <div className="unit" >
             <div className="field name">
                 <div className="check">
                     <input id="cb2" name="cb1" type="checkbox" />
@@ -28,7 +21,7 @@ const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange, onDele
                 <div>
                     <img src={Image} alt="image" className="avatar" /> {Name}
                 </div>
-                <div className={defaultStatus} onClick={onStatusChange} >{Status}</div>
+                <div className={defaultStatus} onClick={onChangeStatus}>{Status}</div>
             </div>
             <div className="field phone">
                 {Phone}
@@ -40,7 +33,7 @@ const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange, onDele
                 <i className="far fa-edit fa-2x"></i>
                 <i className="far fa-trash-alt fa-2x" onClick={onDelete}></i>
             </div>
-        </div>
+        </div >
     )
 }
 

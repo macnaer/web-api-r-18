@@ -1,11 +1,10 @@
-import React, { Fragment } from "react-dom";
+import React, { Fragment } from "react";
 
-// import components
+// Import components
 import ContactList from "./ContactList/ContactList";
-import SideBar from "../SideBar/SideBar";
+import SideBar from "../Sidebar/SideBar";
 
-
-const Main = ({ List, onStatusChange, onDelete }) => {
+const Main = ({ List, onChangeStatus, onDelete }) => {
     return (
         <Fragment>
             <SideBar />
@@ -46,7 +45,7 @@ const Main = ({ List, onStatusChange, onDelete }) => {
                                 </div>
                             </div>
                         </div>
-                        <ContactList List={List} onStatusChange={onStatusChange} onDelete={onDelete} />
+                        <ContactList List={List} onChangeStatus={onChangeStatus} onDelete={onDelete} />
                     </form>
                 </div>
             </div>

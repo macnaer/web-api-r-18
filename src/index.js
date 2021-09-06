@@ -1,7 +1,8 @@
 import { Component } from "react";
 import ReactDOM from "react-dom";
 // Import Routing
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 // Import css file
 import "./index.css";
@@ -79,7 +80,7 @@ class App extends Component {
         <Switch>
           <div className="container bootstrap snippets bootdeys bootdey">
             <div className="row decor-default">
-              <Route path="/" exact render={() => (<Main List={ContactList} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />)} />
+              <Route path="/" exact render={() => (<Main List={ContactList} onChangeStatus={this.onChangeStatus} onDelete={this.onDelete} />)} />
             </div>
           </div>
         </Switch>
