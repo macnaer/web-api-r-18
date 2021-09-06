@@ -1,6 +1,6 @@
 import ContactList from "../ContactList"
 
-const ContactItem = ({ Name, Email, Phone, Image, Status }) => {
+const ContactItem = ({ Name, Email, Phone, Image, Status, onStatusChange }) => {
 
     let defaultStatus = "";
     if (Status === "Friend") {
@@ -28,7 +28,7 @@ const ContactItem = ({ Name, Email, Phone, Image, Status }) => {
                 <div>
                     <img src={Image} alt="image" className="avatar" /> {Name}
                 </div>
-                <div className={defaultStatus}>{Status}</div>
+                <div className={defaultStatus} onClick={onStatusChange} >{Status}</div>
             </div>
             <div className="field phone">
                 {Phone}
