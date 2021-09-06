@@ -1,11 +1,12 @@
 import { Component } from "react";
 import ReactDOM from "react-dom";
+// Import Routing
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Import css file
 import "./index.css";
 
 // Import components
-import SideBar from "./Components/SideBar/SideBar";
 import Main from "./Components/Main/Main";
 
 class App extends Component {
@@ -74,12 +75,16 @@ class App extends Component {
   render() {
     const { ContactList } = this.state;
     return (
-      <div className="container bootstrap snippets bootdeys bootdey">
-        <div className="row decor-default">
-          <SideBar />
-          <Main List={ContactList} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <div className="container bootstrap snippets bootdeys bootdey">
+            <div className="row decor-default">
+              <Route path="/" exact render={() => (<Main List={ContactList} onStatusChange={this.onStatusChange} onDelete={this.onDelete} />)} />
+            </div>
+          </div>
+        </Switch>
+      </Router>
+
     )
   }
 }
