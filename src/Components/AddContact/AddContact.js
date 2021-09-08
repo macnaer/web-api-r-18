@@ -1,5 +1,5 @@
 import { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class AddContact extends Component {
     state = {
@@ -8,21 +8,88 @@ class AddContact extends Component {
         Email: "",
         Gender: "",
         Status: "",
-        Image: "https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg",
-        imgLink: "",
+        Image: null,
+        isRedirect: false
+    }
+
+    getName = (e) => {
+        const name = e.target.value;
+        this.setState({
+            Name: name
+        })
+    }
+
+    getEmail = (e) => {
+        const email = e.target.value;
+        this.setState({
+            Email: email
+        })
+    }
+
+    getPhone = (e) => {
+        const phone = e.target.value;
+        this.setState({
+            Phone: phone
+        })
+    }
+
+    getStatus = (e) => {
+        const status = e.target.value;
+        this.setState({
+            Status: status
+        })
+    }
+
+    getGender = (e) => {
+        const gender = e.target.value;
+        this.setState({
+            Gender: gender
+        })
+    }
+
+    getAvatar = (e) => {
+        const avatar = e.target.value;
+        this.setState({
+            Image: avatar
+        })
+    }
+
+    CreateContact = (e) => {
+        e.preventDefault();
+        const { Name, Phone, Email, Gender, Status, Image } = this.state;
+        // this.props
+        const newContact = {
+            Name,
+            Phone,
+            Email,
+            Gender,
+            Status,
+            Image,
+        }
+
+        console.log(newContact)
+
+        this.setState({
+            isRedirect: true
+        })
     }
 
 
-
     render() {
-        const { Image, Gender, isRedirect } = this.state;
+        let { Image, Gender, isRedirect } = this.state;
 
-        let imgLink = this.state.imgLink;
-        if (Image !== "") {
-            imgLink = `https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg`;
-        } else {
-            imgLink = `https://api.randomuser.me/portraits/${Gender}/${Image}.jpg`;
+        if (isRedirect === true) {
+            return <Redirect to="/" />
         }
+
+        if (Image === null || Image == "") {
+            console.log("Inside")
+            Image = "https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg";
+        }
+        else {
+            Image = `https://api.randomuser.me/portraits/${Gender}/${Image}.jpg`;;
+        }
+
         return (
             <Fragment>
                 <div className="container">
@@ -53,23 +120,19 @@ class AddContact extends Component {
                             <form onSubmit={this.CreateContact}>
                                 <div className="form-group">
                                     <label htmlFor="Name">Name</label>
-                                    <input name="Name" type="text" className="form-control" />
+                                    <input name="Name" type="text" className="form-control" onChange={this.getName} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="Phone">Phone</label>
-                                    <input name="Phone" type="tel" className="form-control" />
+                                    <input name="Phone" type="tel" className="form-control" onChange={this.getPhone} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Email address</label>
-                                    <input type="email" className="form-control" />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="Avatar">Avatar</label>
-                                    <input type="number" min="0" max="99" className="form-control" />
+                                    <input type="email" className="form-control" onChange={this.getEmail} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="Gender">Gender</label>
-                                    <select className="custom-select" >
+                                    <select className="custom-select" onChange={this.getGender} >
                                         <option selected>Choose...</option>
                                         <option value="women">Women</option>
                                         <option value="men">Men</option>
@@ -77,7 +140,7 @@ class AddContact extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="Status">Status</label>
-                                    <select className="custom-select" >
+                                    <select className="custom-select" onChange={this.getStatus} >
                                         <option selected>Choose...</option>
                                         <option value="work">Work</option>
                                         <option value="family">Family</option>
@@ -85,11 +148,15 @@ class AddContact extends Component {
                                         <option value="friend">Friend</option>
                                     </select>
                                 </div>
+                                <div className="form-group">
+                                    <label htmlFor="Avatar">Avatar</label>
+                                    <input type="number" min="0" max="99" className="form-control" onChange={this.getAvatar} />
+                                </div>
                                 <button type="submit" className="btn btn-primary">Add new</button>
                             </form>
                         </div>
                         <div className="col-4">
-                            <img src={imgLink} className="rounded float-left" alt="..." />
+                            <img src={Image} className="rounded addContactImg float-left" alt="..." />
                         </div>
                     </div>
                 </div>

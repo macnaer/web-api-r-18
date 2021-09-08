@@ -1,4 +1,4 @@
-const ContactItem = ({ Name, Email, Phone, Status, Image, onChangeStatus, onDelete }) => {
+const ContactItem = ({ Name, Email, Phone, Status, Image, Gender, onChangeStatus, onDelete }) => {
 
     let defaultStatus = "lab lab-warning";
 
@@ -8,6 +8,8 @@ const ContactItem = ({ Name, Email, Phone, Status, Image, onChangeStatus, onDele
         case "Family": defaultStatus = "lab lab-primary"; break;
         case "Friend": defaultStatus = "lab lab-warning"; break;
     }
+
+    const img = `https://api.randomuser.me/portraits/${Gender}/${Image}.jpg`;
 
     return (
         <div className="unit" >
@@ -19,7 +21,7 @@ const ContactItem = ({ Name, Email, Phone, Status, Image, onChangeStatus, onDele
 
                 </div>
                 <div>
-                    <img src={Image} alt="image" className="avatar" /> {Name}
+                    <img src={img} alt="image" className="avatar" /> {Name}
                 </div>
                 <div className={defaultStatus} onClick={onChangeStatus}>{Status}</div>
             </div>

@@ -314,3 +314,7 @@ input {
     text-align: center;
     font-weight: bold;
 }
+.addContactImg{
+    width: 200px;
+    height: 200px;
+}

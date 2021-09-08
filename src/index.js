@@ -23,7 +23,8 @@ class App extends Component {
         Phone: "+1-800-600-9898",
         Email: "alex@gmail.com",
         Status: "Friend",
-        Image: "https://api.randomuser.me/portraits/men/45.jpg"
+        Gender: "men",
+        Image: 45
       },
       {
         Id: 2,
@@ -31,7 +32,8 @@ class App extends Component {
         Phone: "+1-800-345-4456",
         Email: "cam@gmail.com",
         Status: "Private",
-        Image: "https://api.randomuser.me/portraits/women/55.jpg"
+        Gender: "women",
+        Image: 55
       },
       {
         Id: 3,
@@ -39,7 +41,8 @@ class App extends Component {
         Phone: "+1-800-345-1234",
         Email: "rita@gmail.com",
         Status: "Work",
-        Image: "https://api.randomuser.me/portraits/women/41.jpg"
+        Gender: "women",
+        Image: 41
       }
     ]
   }
