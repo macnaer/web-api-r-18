@@ -5,10 +5,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
 // Import css file
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 // Import components
 import Main from "./Components/Main/Main";
+import NotFound from "./Components/NotFound/NotFound";
+import AddContact from "./Components/AddContact/AddContact";
 
 class App extends Component {
 
@@ -78,11 +81,9 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <div className="container bootstrap snippets bootdeys bootdey">
-            <div className="row decor-default">
-              <Route path="/" exact render={() => (<Main List={ContactList} onChangeStatus={this.onChangeStatus} onDelete={this.onDelete} />)} />
-            </div>
-          </div>
+          <Route path="/" exact render={() => (<Main List={ContactList} onChangeStatus={this.onChangeStatus} onDelete={this.onDelete} />)} />
+          <Route path="/add-contact" exact render={() => (<AddContact />)} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
 
