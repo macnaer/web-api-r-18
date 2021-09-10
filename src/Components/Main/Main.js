@@ -6,11 +6,12 @@ import ContactList from "./ContactList/ContactList";
 import SideBar from "../Sidebar/SideBar";
 
 const Main = ({ List, onChangeStatus, onDelete }) => {
+    const contactCounter = List.length;
     return (
         <Fragment>
             <div className="container bootstrap snippets bootdeys bootdey">
                 <div className="row decor-default">
-                    <SideBar />
+                    <SideBar contactCounter={contactCounter} />
                     <div className="col-lg-9 col-md-8 col-sm-12">
                         <div className="contacts-list">
                             <Link className="title" to="/add-contact">Add New Contact</Link>
@@ -30,23 +31,6 @@ const Main = ({ List, onChangeStatus, onDelete }) => {
                                     <div className="field phone">
                                         Phone
               </div>
-                                    <div className="field email icons">
-                                        Email
-                <div className="btn-group pull-right" role="group">
-                                            <button type="button" className="btn btn-default"><span className="icon icon-folder"></span></button>
-
-                                            <div className="btn-group" role="group">
-                                                <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="icon icon-label"></span></button>
-
-                                                <ul className="dropdown-menu pull-right">
-                                                    <li><a href="#"><span className="label label-success text-dark">New</span></a></li>
-                                                    <li><a href="#"><span className="label label-primary text-dark">Social</span></a></li>
-                                                    <li><a href="#"><span className="label label-warning text-dark">Spam</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <button type="button" className="btn btn-default"><span className="icon icon-trash"></span></button>
-                                        </div>
-                                    </div>
                                 </div>
                                 <ContactList List={List} onChangeStatus={onChangeStatus} onDelete={onDelete} />
                             </form>

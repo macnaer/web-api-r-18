@@ -1,5 +1,6 @@
 import { Component } from "react";
 import ReactDOM from "react-dom";
+import { v4 as uuidv4 } from 'uuid';
 // Import Routing
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -18,7 +19,7 @@ class App extends Component {
   state = {
     ContactList: [
       {
-        Id: 1,
+        Id: uuidv4(),
         Name: "Alexander Verdnam",
         Phone: "+1-800-600-9898",
         Email: "alex@gmail.com",
@@ -27,7 +28,7 @@ class App extends Component {
         Image: 45
       },
       {
-        Id: 2,
+        Id: uuidv4(),
         Name: "Camilla Terry",
         Phone: "+1-800-345-4456",
         Email: "cam@gmail.com",
@@ -36,7 +37,7 @@ class App extends Component {
         Image: 55
       },
       {
-        Id: 3,
+        Id: uuidv4(),
         Name: "Rita Simpson",
         Phone: "+1-800-345-1234",
         Email: "rita@gmail.com",
@@ -79,13 +80,22 @@ class App extends Component {
 
   }
 
+  onAddContact = (newContact) => {
+    const tmpList = this.state.ContactList.slice();
+    tmpList.unshift(newContact);
+
+    this.setState({
+      ContactList: tmpList
+    })
+  }
+
   render() {
     const { ContactList } = this.state;
     return (
       <Router>
         <Switch>
           <Route path="/" exact render={() => (<Main List={ContactList} onChangeStatus={this.onChangeStatus} onDelete={this.onDelete} />)} />
-          <Route path="/add-contact" exact render={() => (<AddContact />)} />
+          <Route path="/add-contact" exact render={() => (<AddContact onAddContact={this.onAddContact} />)} />
           <Route component={NotFound} />
         </Switch>
       </Router>

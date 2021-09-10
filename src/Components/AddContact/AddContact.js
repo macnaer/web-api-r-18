@@ -1,5 +1,6 @@
 import { Component, Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 class AddContact extends Component {
     state = {
@@ -57,8 +58,9 @@ class AddContact extends Component {
     CreateContact = (e) => {
         e.preventDefault();
         const { Name, Phone, Email, Gender, Status, Image } = this.state;
-        // this.props
+        const { onAddContact } = this.props;
         const newContact = {
+            Id: uuidv4(),
             Name,
             Phone,
             Email,
@@ -67,7 +69,7 @@ class AddContact extends Component {
             Image,
         }
 
-        console.log(newContact)
+        onAddContact(newContact)
 
         this.setState({
             isRedirect: true
@@ -83,7 +85,6 @@ class AddContact extends Component {
         }
 
         if (Image === null || Image == "") {
-            console.log("Inside")
             Image = "https://upload.wikimedia.org/wikipedia/commons/5/50/User_icon-cp.svg";
         }
         else {
@@ -133,7 +134,7 @@ class AddContact extends Component {
                                 <div className="form-group">
                                     <label htmlFor="Gender">Gender</label>
                                     <select className="custom-select" onChange={this.getGender} >
-                                        <option selected>Choose...</option>
+                                        <option defaultValue>Choose...</option>
                                         <option value="women">Women</option>
                                         <option value="men">Men</option>
                                     </select>
@@ -141,11 +142,11 @@ class AddContact extends Component {
                                 <div className="form-group">
                                     <label htmlFor="Status">Status</label>
                                     <select className="custom-select" onChange={this.getStatus} >
-                                        <option selected>Choose...</option>
-                                        <option value="work">Work</option>
-                                        <option value="family">Family</option>
-                                        <option value="private">Private</option>
-                                        <option value="friend">Friend</option>
+                                        <option defaultValue>Choose...</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Family">Family</option>
+                                        <option value="Private">Private</option>
+                                        <option value="Friend">Friend</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
