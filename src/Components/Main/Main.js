@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ContactList from "./ContactList/ContactList";
 import SideBar from "../Sidebar/SideBar";
 
-const Main = ({ List, onChangeStatus, onDelete }) => {
+const Main = ({ List, onChangeStatus, onDelete, onGetCurrentContact }) => {
     const contactCounter = List.length;
     return (
         <Fragment>
@@ -32,7 +32,7 @@ const Main = ({ List, onChangeStatus, onDelete }) => {
                                         Phone
               </div>
                                 </div>
-                                <ContactList List={List} onChangeStatus={onChangeStatus} onDelete={onDelete} />
+                                <ContactList List={List} onGetCurrentContact={onGetCurrentContact} onChangeStatus={onChangeStatus} onDelete={onDelete} />
                             </form>
                         </div>
                     </div>

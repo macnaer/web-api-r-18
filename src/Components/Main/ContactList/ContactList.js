@@ -1,12 +1,13 @@
 // Import components
 import Contactitem from "./ContactItem/ContactItem";
 
-const ContactList = ({ List, onChangeStatus, onDelete }) => {
+const ContactList = ({ List, onChangeStatus, onDelete, onGetCurrentContact }) => {
     const item = List.map(listItem => {
         return (
             <Contactitem key={listItem.Id}
                 {...listItem} onChangeStatus={() => onChangeStatus(listItem.Id)}
-                onDelete={() => onDelete(listItem.Id)} />
+                onDelete={() => onDelete(listItem.Id)}
+                onGetCurrentContact={() => onGetCurrentContact(listItem.Id)} />
         )
     });
     return (

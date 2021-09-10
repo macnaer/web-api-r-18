@@ -1,4 +1,5 @@
-const ContactItem = ({ Name, Email, Phone, Status, Image, Gender, onChangeStatus, onDelete }) => {
+import { Link } from "react-router-dom";
+const ContactItem = ({ Name, Email, Phone, Status, Image, Gender, onChangeStatus, onDelete, onGetCurrentContact }) => {
 
     let defaultStatus = "lab lab-warning";
 
@@ -32,7 +33,8 @@ const ContactItem = ({ Name, Email, Phone, Status, Image, Gender, onChangeStatus
                 {Email}
             </div>
             <div className="icons">
-                <i className="far fa-edit fa-2x"></i>
+                <Link to="/edit-contact"><i className="far fa-edit fa-2x" onClick={onGetCurrentContact}></i></Link>
+
                 <i className="far fa-trash-alt fa-2x" onClick={onDelete}></i>
             </div>
         </div >

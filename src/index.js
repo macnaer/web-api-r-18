@@ -13,6 +13,7 @@ import "./index.css";
 import Main from "./Components/Main/Main";
 import NotFound from "./Components/NotFound/NotFound";
 import AddContact from "./Components/AddContact/AddContact";
+import EditContact from "./Components/EditContact/EditContact";
 
 class App extends Component {
 
@@ -45,7 +46,8 @@ class App extends Component {
         Gender: "women",
         Image: 41
       }
-    ]
+    ],
+    CurrentContact: ""
   }
 
   onStatusChange = (Id) => {
@@ -89,13 +91,23 @@ class App extends Component {
     })
   }
 
+  onGetCurrentContact = (Id) => {
+    const index = this.state.ContactList.findIndex(elem => elem.Id === Id);
+    const currentContact = this.state.ContactList[index];
+    console.log(currentContact);
+    this.setState({
+      CurrentContact: currentContact
+    })
+  }
+
   render() {
-    const { ContactList } = this.state;
+    const { ContactList, CurrentContact } = this.state;
     return (
       <Router>
         <Switch>
-          <Route path="/" exact render={() => (<Main List={ContactList} onChangeStatus={this.onChangeStatus} onDelete={this.onDelete} />)} />
+          <Route path="/" exact render={() => (<Main List={ContactList} onGetCurrentContact={this.onGetCurrentContact} onChangeStatus={this.onChangeStatus} onDelete={this.onDelete} />)} />
           <Route path="/add-contact" exact render={() => (<AddContact onAddContact={this.onAddContact} />)} />
+          <Route path="/edit-contact" exact render={() => (<EditContact CurrentContact={CurrentContact} />)} />
           <Route component={NotFound} />
         </Switch>
       </Router>
