@@ -70,8 +70,29 @@ class App extends Component {
 
   URL = "https://react-18-ae119-default-rtdb.firebaseio.com/contact.json";
 
+  async getContactList() {
+    const List = await fetch(this.URL)
+      .then(responce => {
+        return responce.json();
+      }).then(data => {
+        if (data == null) {
+          return {
+            List: []
+          }
+        } else {
+          return {
+            List: data
+          }
+        }
+      })
+    return List
+  }
   componentDidMount() {
-    console.log("componentDidMount")
+    this.getContactList().then(list => {
+      this.setState({
+        ContactList: list.List
+      })
+    })
   }
 
   updateContactList = (list) => {
@@ -101,6 +122,7 @@ class App extends Component {
     this.setState({
       ContactList: tmpList
     })
+    this.updateContactList(tmpList);
   }
 
   onDelete = (Id) => {
@@ -113,7 +135,7 @@ class App extends Component {
     this.setState({
       ContactList: tmpList
     })
-
+    this.updateContactList(tmpList);
   }
 
   onAddContact = (newContact) => {
