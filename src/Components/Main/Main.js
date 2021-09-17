@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // Import components
 import ContactList from "./ContactList/ContactList";
-import SideBar from "../Sidebar/SideBar";
+import SideBar from "../SideBar/SideBar";
 
 const Main = ({ List, onChangeStatus, onDelete, onGetCurrentContact }) => {
     const contactCounter = List.length;
