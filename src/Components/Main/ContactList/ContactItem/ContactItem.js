@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
+
 import { Link } from "react-router-dom";
 const ContactItem = ({ Name, Email, Phone, Status, Image, Gender, onChangeStatus, onDelete, onGetCurrentContact }) => {
 
@@ -41,4 +43,8 @@ const ContactItem = ({ Name, Email, Phone, Status, Image, Gender, onChangeStatus
     )
 }
 
-export default ContactItem;
+const mapDispatchToProps = {
+
+}
+
+export default connect(null, mapDispatchToProps)(ContactItem);

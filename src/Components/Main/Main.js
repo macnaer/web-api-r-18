@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import ContactList from "./ContactList/ContactList";
 import SideBar from "../SideBar/SideBar";
 
-const Main = ({ List, onChangeStatus, onDelete, onGetCurrentContact }) => {
-    const contactCounter = List.length;
+const Main = () => {
     return (
         <Fragment>
             <div className="container bootstrap snippets bootdeys bootdey">
                 <div className="row decor-default">
-                    <SideBar contactCounter={contactCounter} />
+                    <SideBar />
                     <div className="col-lg-9 col-md-8 col-sm-12">
                         <div className="contacts-list">
                             <Link className="title" to="/add-contact">Add New Contact</Link>
@@ -26,13 +25,13 @@ const Main = ({ List, onChangeStatus, onDelete, onGetCurrentContact }) => {
                                             <input id="cb1" name="cb1" type="checkbox" />
                                             <label htmlFor="cb1"></label>
                                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"></svg></div>
-                Name
-              </div>
+                                        Name
+                                    </div>
                                     <div className="field phone">
                                         Phone
-              </div>
+                                    </div>
                                 </div>
-                                <ContactList List={List} onGetCurrentContact={onGetCurrentContact} onChangeStatus={onChangeStatus} onDelete={onDelete} />
+                                <ContactList />
                             </form>
                         </div>
                     </div>
